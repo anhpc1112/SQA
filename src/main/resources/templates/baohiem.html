@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+   <!-- Title Page-->
+    <title>Healthy Insurance</title>
+
+    <!-- Icons font CSS-->
+    <link href="assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="assets/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+
+    <!-- Main CSS-->
+    <link href="assets/css/main.css" rel="stylesheet" media="all">
+    <!-- Favicons -->
+        <link href="assets/img/favicon.png" rel="icon">
+        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+        <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        
+       
+
+  
+        
+       
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
+        <style>
+        		
+        		#tk{
+        			list-style:none;
+        			position: absolute;
+    				right: 30px;
+        		
+        		}
+        		
+        		
+        </style>
+</head>
+
+<body>
+   <form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+    	<input type="submit"/>
+    </form>
+    <header id="header">
+            <div class="container d-flex align-items-center">
+
+                <h1 class="logo mr-auto"><a th:href="@{/}">Health Insurance</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+                <nav class="nav-menu d-none d-lg-block">
+                    <ul>
+                        <li class=""><a th:href="@{/}">Trang chủ</a></li>
+                        <!-- <li><a href="#">Services</a></li> -->
+
+                        <li><a th:href="@{/dangki}">Khai báo thông tin</a>
+              
+                        </li>
+                        <li>
+                            <a th:href="@{/baohiem}">Bảo hiểm của bạn</a>
+                        </li>
+                        <li><a th:href="@{/dongbaohiem}">Đóng bảo hiểm</a></li>
+
+                    </ul>
+                </nav>
+                <!-- .nav-menu -->
+
+            
+	
+  
+      		<li class="nav-item dropdown" style="list-style:none;" sec:authorize="isAuthenticated()">
+      				<a sec:authentication="principal.username" class="nav-link dropdown-toggle appointment-btn scrollto" data-toggle="dropdown"></a>
+      				<div class="dropdown-menu">
+      				<a class="dropdown-item" href="" id="logoutLink">Đăng xuất</a>
+      				</div>
+      				</li>
+
+            </div>
+        </header>
+ 
+                
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Bảo hiểm của bạn</h2>
+                </div>
+                <div class="card-body" th:if="${customer.payment != null}" >
+                    <form th:object=${customer}>
+                        <div class="form-row" >
+                            <div class="name">Họ và tên</div>
+                            <div class="value">
+                                <div class="input-group">
+
+
+                                    <input class="input--style-5 " type="text" name="name" required th:field=*{hoTen} disabled>
+                                    <!-- <label class="label--desc ">Họ</label> -->
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Chứng minh nhân dân</div>
+                            <div class="value">
+                                <div class="input-group ">
+                                    <input class="input--style-5 " type="text" name="CMND" required th:field=*{cmnd} disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row ">
+                            <div class="name">Giới tính</div>
+                            <div class="value ">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search ">
+                                        <select name="gioitinh" id="gioitinh" th:field=*{gioiTinh} disabled>
+                               
+                                            <option selected="selected" value="Nam">Nam</option>
+                                            <option value="Nữ">Nữ</option>
+                                            <option value="Khác">Khác</option>
+                    
+                                        </select>
+                                        <div class="select-dropdown "></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row ">
+                            <div class="name ">Ngày sinh</div>
+                            <div class="value ">
+
+                                <div class="input-group-icon ">
+                                    <input class="input--style-5 js-datepicker " type="text" name="birthday" th:field=*{dob} disabled>
+                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar "></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-row ">
+                            <div class="name ">Số điện thoại</div>
+                            <div class="value ">
+                                <div class="input-group ">
+                                    <input class="input--style-5 " type="text" name="sdt " required th:field=*{sdt} disabled>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row ">
+                            <div class="name ">Quốc tịch</div>
+                            <div class="value ">
+                                <div class="input-group ">
+                                    <input class="input--style-5 " type="text" name="quoctich" required th:field=*{quocTich} disabled>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-row ">
+                            <div class="name ">Dân tộc</div>
+                            <div class="value ">
+                                <div class="input-group ">
+                                    <input class="input--style-5 " type="text" name="dantoc" required th:field=*{danToc} disabled>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row ">
+                            <div class="name ">Nơi đăng ký khai sinh</div>
+                            <div class="value ">
+                                <div class="input-group ">
+                                    <input class="input--style-5 " type="text" name="dangkikhaisinh" required th:field=*{diaChiKhaiSinh} disabled>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row ">
+                            <div class="name ">Địa chỉ thường trú</div>
+                            <div class="value ">
+                                <div class="input-group ">
+                                    <input class="input--style-5 " type="text" name="diachi" required th:field=*{diaChiNhanKetQua} disabled >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row ">
+                            <div class="name ">Phương thức đóng</div>
+                            <div class="value ">
+                                <div class="input-group ">
+                                    <div class="rs-select2 js-select-simple select--no-search ">
+                                        <select name="subject " required th:field=*{payment.kiHan} disabled>
+                                
+                                            <option selected="selected" value=3>3 tháng</option>
+                                            <option value =6>6 tháng</option>
+                                            <option value = 12>1 Năm</option>
+                                        </select>
+                                        <div class="select-dropdown "></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row ">
+                            <div class="name ">Đối tượng</div>
+                            <div class="value ">
+                                <div class="input-group ">
+                                    <div class="rs-select2 js-select-simple select--no-search ">
+                                        <select name="subject " required th:field=*{ngheNghiep} disabled>
+                            
+                                            <option selected="selected" value="Người lao động">Người lao động</option>
+                                            <option value="Học sinh - sinh viên">Học sinh - sinh viên</option>
+                                            <option value="Hộ cận nghèo">Hộ cận nghèo</option>
+                                        </select>
+                                        
+                                        <div class="select-dropdown "></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                              <div class="form-row ">
+                            <div class="name ">Số tiền dự kiến phải trả</div>
+                            <div class="value ">
+                                <div class="input-group ">
+                                    <input class="input--style-5 " type="text" name="total" required th:field=*{payment.tongTien} disabled>
+                                    <label class="">Đơn vị: Đồng</label>
+                                </div>
+                            </div>
+                        </div>
+                     
+
+                    
+                           
+                    </form>
+                </div>
+                <div class="card-body" th:if="${customer.payment == null}" >
+                <h2>Bạn chưa khai báo thông tin, vui lòng quay để khai báo thông tin cá nhân</h2>
+                <br>
+                <h2>Xin cảm ơn!</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="assets/vendor/jquery/jquery.min.js "></script>
+    <!-- Vendor JS-->
+    <script src="assets/vendor/select2/select2.min.js "></script>
+    <script src="assets/vendor/datepicker/moment.min.js "></script>
+    <script src="assets/vendor/datepicker/daterangepicker.js "></script>
+
+    <!-- Main JS-->
+    <script src="assets/js/global.js "></script>
+       <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#logoutLink").on("click",function(e){
+			e.preventDefault();
+			document.logoutForm.submit();
+		});
+	});
+
+</script>
+
+
+</body>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->

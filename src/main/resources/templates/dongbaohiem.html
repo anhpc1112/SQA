@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+   <!-- Title Page-->
+    <title>Healthy Insurance</title>
+
+    <!-- Icons font CSS-->
+    <link href="assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="assets/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="assets/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>
+
+    <!-- Main CSS-->
+    <link href="assets/css/main.css" rel="stylesheet" media="all">
+    <!-- Favicons -->
+        <link href="assets/img/favicon.png" rel="icon">
+        <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+        
+            <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+        <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+        <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        
+       
+
+        <!-- Template Main CSS File -->
+        <link href="assets/css/style.css" rel="stylesheet">
+         <style>
+        		
+        		#tk{
+        			list-style:none;
+        			position: absolute;
+    				right: 30px;
+        		
+        		}
+        		
+        		
+        </style>
+</head>
+
+<body>
+<form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+    	<input type="submit"/>
+    </form>
+     <header id="header">
+            <div class="container d-flex align-items-center">
+
+                <h1 class="logo mr-auto"><a th:href="@{/}">Health Insurance</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+                <nav class="nav-menu d-none d-lg-block">
+                    <ul>
+                        <li class=""><a th:href="@{/}">Trang chủ</a></li>
+                        <!-- <li><a href="#">Services</a></li> -->
+
+                        <li><a th:href="@{/dangki}">Khai báo thông tin</a>
+              
+                        </li>
+                        <li>
+                            <a th:href="@{/baohiem}">Bảo hiểm của bạn</a>
+                        </li>
+                        <li><a th:href="@{/dongbaohiem}">Đóng bảo hiểm</a></li>
+
+                    </ul>
+                </nav>
+                <!-- .nav-menu -->
+
+            
+	
+  
+      		<li class="nav-item dropdown" style="list-style:none;" sec:authorize="isAuthenticated()">
+      				<a sec:authentication="principal.username" class="nav-link dropdown-toggle appointment-btn scrollto" data-toggle="dropdown"></a>
+      				<div class="dropdown-menu">
+      				<a class="dropdown-item" href="" id="logoutLink">Đăng xuất</a>
+      				</div>
+      				</li>
+
+            </div>
+        </header>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Đóng bảo hiểm</h2>
+                </div>
+                <div class="card-body">
+                  <h2>Tính năng đóng bảo hiểm online hiện đang phát triển.</h2>
+                  <h2>Vui lòng đến các cơ sở gần nhất của chúng tôi để đóng tiền bảo hiểm cũng như nhận thẻ bảo hiểm.</h2>
+                  <h2>Xin Cảm ơn!</h2>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="assets/vendor/jquery/jquery.min.js "></script>
+    <!-- Vendor JS-->
+    <script src="assets/vendor/select2/select2.min.js "></script>
+    <script src="assets/vendor/datepicker/moment.min.js "></script>
+    <script src="assets/vendor/datepicker/daterangepicker.js "></script>
+
+    <!-- Main JS-->
+    <script src="assets/js/global.js "></script>
+    
+       <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+	$(document).ready(function(){
+		$("#logoutLink").on("click",function(e){
+			e.preventDefault();
+			document.logoutForm.submit();
+		});
+	});
+
+</script>
+
+</body>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
