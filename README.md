@@ -1,1 +1,2 @@
-# SQA
+# SQA - 
+Software Quality Assurance
